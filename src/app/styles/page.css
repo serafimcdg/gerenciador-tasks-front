@@ -1,0 +1,14 @@
+.custom-blue-bg {
+    width: 50%;
+    height: 80vh;
+    background: rgba(5, 0, 255, 0.57);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    padding: 2rem;
+    margin-right: 65px;
+  }
+  
