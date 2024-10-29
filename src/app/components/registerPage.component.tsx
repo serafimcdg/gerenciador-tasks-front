@@ -133,11 +133,12 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
               className="w-full px-3 py-2 border-b-2 border-white bg-transparent text-white focus:outline-none focus:border-blue-500"
               required
             />
-            {showResendButton && (
+            {showResendButton &&  !isCodeValidated &&(
               <button
                 type="button"
                 onClick={handleResendVerificationCode}
                 className="ml-2 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 relative"
+                disabled={isLoadingResendCode}
               >
                 Reenviar
                 {isLoadingResendCode && (
@@ -159,6 +160,7 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
           <button
             type="submit"
             className="w-1/2 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 mb-4 relative"
+            disabled={isLoadingSendCode}
           >
             Enviar Código de Verificação
             {isLoadingSendCode && (
@@ -191,6 +193,7 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
           <button
             type="submit"
             className="w-1/2 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 mb-4 relative"
+            disabled={isLoadingValidateCode}
           >
             Validar Código
             {isLoadingValidateCode && (
@@ -232,6 +235,7 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
           <button
             type="submit"
             className="w-1/2 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 mb-4 relative"
+            disabled={isLoadingRegister}
           >
             Registrar
             {isLoadingRegister && (
