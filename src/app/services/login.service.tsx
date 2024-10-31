@@ -39,3 +39,18 @@ export const validateVerificationCode = async (email: string, verificationCode: 
       throw new Error('Erro ao validar o código de verificação');
     }
   };
+
+ export const verifyToken = async () => {
+    try {
+      const token = sessionStorage.getItem("token");
+      const response = await axios.get(`${API_URL}api/users/verify-token`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data.valid; 
+    } catch (error) {
+      console.error('Token inválido ou expirado:', error);
+      return false; 
+    }
+  };

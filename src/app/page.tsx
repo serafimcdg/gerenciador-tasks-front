@@ -18,25 +18,23 @@ const LoginPage = () => {
 
     try {
       const data = await login(email, password);
-      localStorage.setItem("token", data.token);
-      router.push("");
+      sessionStorage.setItem("token", data.token);
+      router.push("/home");
     } catch (err) {
       setError("Email ou senha invalidos");
     }
   };
 
   return (
-    <div className="background-container  w-full flex">
-      <div className="flex justify-end items-center min-h-screen bg-gray-100 w-full">
+    <div className="background-container w-full flex">
+      <div className="flex min-h-screen w-full bg-gray-100">
         <div
-          className="w-full h-screen bg-cover bg-left"
+          className="image-container bg-cover bg-left"
           style={{
             backgroundImage: "url('/assets/background.png')",
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
           }}
         ></div>
-        <div className="custom-blue-bg flex flex-col justify-center items-center p-8 rounded-lg shadow-md">
+        <div className="custom-blue-bg flex flex-col justify-center items-center p-8 rounded-lg shadow-md w-full md:w-1/2">
           {!isRegister ? (
             <>
               <h1 className="text-3xl font-bold mb-6 text-white pb-16">
@@ -57,7 +55,6 @@ const LoginPage = () => {
                     required
                   />
                 </div>
-
                 <div className="mb-6 w-3/4">
                   <label className="block text-white mb-2">Senha</label>
                   <input
