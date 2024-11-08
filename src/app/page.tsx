@@ -46,7 +46,7 @@ const LoginPage = () => {
                 className="flex flex-col items-center w-full"
               >
                 <div className="mb-4 w-3/4">
-                  <label className="block text-white mb-2">Email</label>
+                  <div className="block text-white mb-2">Email</div>
                   <input
                     type="email"
                     value={email}
@@ -56,7 +56,7 @@ const LoginPage = () => {
                   />
                 </div>
                 <div className="mb-6 w-3/4">
-                  <label className="block text-white mb-2">Senha</label>
+                  <div className="block text-white mb-2">Senha</div>
                   <input
                     type="password"
                     value={password}
@@ -78,12 +78,15 @@ const LoginPage = () => {
 
               <p className="text-white mt-4">
                 Não possui uma conta?
-                <span
-                  className="text-blue-300 cursor-pointer"
-                  onClick={() => setIsRegister(true)}
-                >
-                  Cadastre-se aqui
-                </span>
+                <div className="container">
+                  <button
+                    className="text-blue-300 cursor-pointer"
+                    onClick={() => setIsRegister(true)}
+                    aria-label="Cadastre-se aqui"
+                  >
+                    Cadastre-se aqui
+                  </button>
+                </div>
               </p>
             </>
           ) : (

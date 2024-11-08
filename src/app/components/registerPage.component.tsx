@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { RegisterService } from "../services/register.service";
 
 interface RegisterPageProps {
@@ -24,7 +24,7 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
   const [isLoadingResendCode, setIsLoadingResendCode] = useState(false); 
   const [isLoadingValidateCode, setIsLoadingValidateCode] = useState(false); 
   const [isLoadingRegister, setIsLoadingRegister] = useState(false);
-  const router = useRouter();
+  // const router = useRouter();
 
   const handleSendVerificationCode = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -35,13 +35,13 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
     try {
       await RegisterService.sendVerificationCode(email);
       setVerificationCodeSent(true);
-      setSuccessMessage("Código de verificação enviado. Verifique seu e-mail.");
+      setSuccessMessage("Codigo de verificação enviado. Verifique seu e-mail.");
       setShowResendButton(false);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError("Erro desconhecido ao enviar o código de verificação.");
+        setError("Erro desconhecido ao enviar o codigo de verificação.");
       }
       setShowResendButton(true);
     } finally {
@@ -56,13 +56,13 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
 
     try {
       await RegisterService.resendVerificationCode(email);
-      setSuccessMessage("Código reenviado. Verifique seu e-mail.");
+      setSuccessMessage("Codigo reenviado. Verifique seu e-mail.");
       setShowResendButton(false);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError("Erro desconhecido ao reenviar o código de verificação.");
+        setError("Erro desconhecido ao reenviar o codigo de verificação.");
       }
     } finally {
       setIsLoadingResendCode(false); 
@@ -83,7 +83,7 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError("Código de verificação inválido.");
+        setError("Codigo de verificação invalido.");
       }
       setShowResendButton(true);
     } finally {
@@ -103,7 +103,7 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
         password,
         verificationCode
       );
-      router.push("/login");
+      // router.push("/login");
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
@@ -124,7 +124,7 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
         className="flex flex-col items-center w-full"
       >
         <div className="mb-4 w-3/4">
-          <label className="block text-white mb-2">Email</label>
+          <div className="block text-white mb-2">Email</div>
           <div className="flex items-center">
             <input
               type="email"
@@ -178,9 +178,9 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
           className="flex flex-col items-center w-full"
         >
           <div className="mb-4 w-3/4">
-            <label className="block text-white mb-2">
+            <div className="block text-white mb-2">
               Código de Verificação
-            </label>
+            </div>
             <input
               type="text"
               value={verificationCode}
@@ -211,7 +211,7 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
           className="flex flex-col items-center w-full"
         >
           <div className="mb-4 w-3/4">
-            <label className="block text-white mb-2">Nome</label>
+            <div className="block text-white mb-2">Nome</div>
             <input
               type="text"
               value={name}
@@ -222,7 +222,7 @@ const RegisterPage = ({ setIsRegister }: RegisterPageProps) => {
           </div>
 
           <div className="mb-4 w-3/4">
-            <label className="block text-white mb-2">Senha</label>
+            <div className="block text-white mb-2">Senha</div>
             <input
               type="password"
               value={password}
